@@ -31,8 +31,8 @@ class SpringsModel(AbstractModel):
         diffrax_max_steps=1<<12,
     ):
         self.parameters_default = parameters_default
-        self.signal = signal
         self.ts = ts
+        self.signal = signal
         self.y0 = y0
 
         self.diffrax_solver = diffrax_solver
