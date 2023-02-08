@@ -17,7 +17,7 @@ def make_pulse(h):
 
 def make_pulse_delayed(h):
     "signal active from `1` to `h`"
-    return lambda t: (t >= 1) * (t < h)
+    return lambda t: (t >= 1) * (t < h + 1)
 
 
 # complex, for testing
