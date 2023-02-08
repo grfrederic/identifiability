@@ -58,6 +58,16 @@ def run_mcmc(
     return samples_by_chain, log_probs_by_chain
 
 
+def mcmc_report(samples_by_chain, parameters_names=None):
+    # r-hats and effective samples
+    efss = blackjax.diagnostics.effective_sample_size(samples_by_chain)
+    rs = blackjax.diagnostics.potential_scale_reduction(samples_by_chain)
+
+    for i, (r, efs) in enumerate(zip(rs, efss)):
+        name = f'rate {i}' if parameters_names is None else parameters_names[i]
+        print(f"{name} r-hat: {float(r):.3f} (eff. {efs:4.1f})")
+
+
 def blackjax_inference_loop(rng_key, kernel, initial_state, num_samples):
     @jax.jit
     def one_step(state, rng_key):

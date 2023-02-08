@@ -47,7 +47,6 @@ class CascadeK4P9Fb(CascadeModel):
             print()
 
 
-
 parameters_default = jnp.array([
     2.0, 8.0,  # a1, d1
     3.0, 3.0,  # a2, d2
@@ -56,17 +55,11 @@ parameters_default = jnp.array([
       1000.0,  # fb
 ])
 
-cascade_k4p9_fb_train = CascadeK4P9Fb(
-    ts=jnp.linspace(0, 11, 12),
-    signal=signals.make_pulse(4),
-)
 
-cascade_k4p9_fb_test_blocky = CascadeK4P9Fb(
-    ts=jnp.linspace(0, 12, 121),
-    signal=signals.test_blocky,
-)
-
-cascade_k4p9_fb_test_wiggly = CascadeK4P9Fb(
-    ts=jnp.linspace(0, 12, 121),
-    signal=signals.test_wiggly,
-)
+parameters_median = jnp.array([
+    jnp.e, jnp.e,  # a1, d1
+    jnp.e, jnp.e,  # a2, d2
+    jnp.e, jnp.e,  # a3, d3
+    jnp.e, jnp.e,  # a4, d4
+    1000 * jnp.e,  # fb
+])

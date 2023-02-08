@@ -43,24 +43,14 @@ class CascadeK2P5Fb(CascadeModel):
             print()
 
 
-
 parameters_default = jnp.array([
    10.0, 2.0,  # a1, d1
    10.0, 2.0,  # a2, d2
       1000.0,  # fb
 ])
 
-cascade_k2p5_fb_train = CascadeK2P5Fb(
-    ts=jnp.linspace(0, 11, 12),
-    signal=signals.make_pulse(4),
-)
-
-cascade_k2p5_fb_test_blocky = CascadeK2P5Fb(
-    ts=jnp.linspace(0, 12, 121),
-    signal=signals.test_blocky,
-)
-
-cascade_k2p5_fb_test_wiggly = CascadeK2P5Fb(
-    ts=jnp.linspace(0, 12, 121),
-    signal=signals.test_wiggly,
-)
+parameters_median = jnp.array([
+    jnp.e, jnp.e,  # a1, d1
+    jnp.e, jnp.e,  # a2, d2
+    1000 * jnp.e,  # fb
+])

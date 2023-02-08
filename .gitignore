@@ -1,3 +1,8 @@
+# Notebooks (by default) and project cache
+*.ipynb
+cache/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
