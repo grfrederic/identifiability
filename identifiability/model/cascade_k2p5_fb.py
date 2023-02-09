@@ -5,11 +5,13 @@ from .. import signals
 
 
 class CascadeK2P5Fb(CascadeModel):
-    parameters_names = [ 
-        'a1', 'd1',
-        'a2', 'd2',
-        'fb',
-    ]
+    @property
+    def parameters_names(self):
+        return [ 
+            'a1', 'd1',
+            'a2', 'd2',
+            'fb',
+        ]
 
     @property
     def y_dim(self):
