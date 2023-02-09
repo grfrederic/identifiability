@@ -1,6 +1,7 @@
-# Notebooks (by default) and project cache
+# Notebooks (by default), project cache and private files
 *.ipynb
 cache/
+private/
 
 
 # Byte-compiled / optimized / DLL files
