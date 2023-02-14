@@ -36,7 +36,7 @@ def stop(state, *args, **kwargs):
 
 # applied to trajectories before calculating errors
 def softlog(x):
-    return jnp.log10(0.01 + x)
+    return jnp.log10(0.001 + x)
 
 
 # used as a basis for construcing priors

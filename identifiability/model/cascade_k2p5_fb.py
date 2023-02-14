@@ -10,7 +10,7 @@ class CascadeK2P5Fb(CascadeModel):
         return [ 
             'a1', 'd1',
             'a2', 'd2',
-            'fb',
+            'f1',
         ]
 
     @property
@@ -19,12 +19,12 @@ class CascadeK2P5Fb(CascadeModel):
 
     def _make_derivative_fn(self):
         def derivative_fn(t, y, args):
-            a1, d1, a2, d2, fb = args
+            a1, d1, a2, d2, f1 = args
             y0 = self.signal(t)
             y1, y2 = y
 
             return jnp.array([
-                a1 * y0 / (1 + fb * y2) * (1 - y1) - d1 * y1,
+                a1 * y0 / (1 + f1 * y2) * (1 - y1) - d1 * y1,
                 a2 * y1                 * (1 - y2) - d2 * y2,
             ])
 
@@ -48,11 +48,11 @@ class CascadeK2P5Fb(CascadeModel):
 parameters_default = jnp.array([
    10.0, 2.0,  # a1, d1
    10.0, 2.0,  # a2, d2
-      1000.0,  # fb
+      1000.0,  # f1
 ])
 
 parameters_median = jnp.array([
     jnp.e, jnp.e,  # a1, d1
     jnp.e, jnp.e,  # a2, d2
-    1000 * jnp.e,  # fb
+    1000 * jnp.e,  # f1
 ])

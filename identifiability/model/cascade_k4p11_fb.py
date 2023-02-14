@@ -12,7 +12,7 @@ class CascadeK4P11Fb(CascadeModel):
             'a2', 'd2',
             'a3', 'd3',
             'a4', 'd4',
-            'fb1', 'fb2', 'fb3',
+            'f1', 'f2', 'f3',
         ]
 
     @property
@@ -21,14 +21,14 @@ class CascadeK4P11Fb(CascadeModel):
 
     def _make_derivative_fn(self):
         def derivative_fn(t, y, args):
-            a1, d1, a2, d2, a3, d3, a4, d4, fb1, fb2, fb3 = args
+            a1, d1, a2, d2, a3, d3, a4, d4, f1, f2, f3 = args
             y0 = self.signal(t)
             y1, y2, y3, y4 = y
 
             return jnp.array([
-                a1 * y0 / (1 + fb1 * y4) * (1 - y1) - d1 * y1,
-                a2 * y1 / (1 + fb2 * y4) * (1 - y2) - d2 * y2,
-                a3 * y2 / (1 + fb3 * y4) * (1 - y3) - d3 * y3,
+                a1 * y0 / (1 + f1 * y4) * (1 - y1) - d1 * y1,
+                a2 * y1 / (1 + f2 * y4) * (1 - y2) - d2 * y2,
+                a3 * y2 / (1 + f3 * y4) * (1 - y3) - d3 * y3,
                 a4 * y3                  * (1 - y4) - d4 * y4,
             ])
 
@@ -55,9 +55,9 @@ parameters_default = jnp.array([
     3.0, 3.0,  # a2, d2
     4.0, 4.0,  # a3, d3
    10.0, 2.0,  # a4, d4
-        10.0,  # fb1
-        10.0,  # fb2
-        10.0,  # fb3
+        10.0,  # f1
+        10.0,  # f2
+        10.0,  # f3
 ])
 
 
@@ -66,7 +66,7 @@ parameters_median = jnp.array([
     jnp.e, jnp.e,  # a2, d2
     jnp.e, jnp.e,  # a3, d3
     jnp.e, jnp.e,  # a4, d4
-      10 * jnp.e,  # fb1
-      10 * jnp.e,  # fb2
-      10 * jnp.e,  # fb3
+      10 * jnp.e,  # f1
+      10 * jnp.e,  # f2
+      10 * jnp.e,  # f3
 ])
