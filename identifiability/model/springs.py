@@ -8,7 +8,7 @@ from .. import diffrax_utils
 from .. import signals
 
 
-y0_default = jnp.array([-1.0, 0.0, 1.0, 0.0, 0.0, 0.0])
+y0_default = jnp.array([1.0, 0.0, -1.0, 0.0, 0.0, 0.0])
 
 
 class SpringsModel(AbstractODEModel):
@@ -59,11 +59,11 @@ class SpringsModel(AbstractODEModel):
 
     def _make_derivative_fn(self):
         def derivative_fn(t, y, args):
-            p1, p2, p3, v1, v2, v3 = y
+            x1, x2, x3, v1, v2, v3 = y
             m1, m2, m3, b1, b2, b3, k1, k2 = args
 
-            f12 = (p2 - p1 - 1.) * k1  # string lengths = 1.
-            f23 = (p3 - p2 - 1.) * k2
+            f12 = (x2 - x1 + 1.) * k1  # string lengths = 1.
+            f23 = (x3 - x2 + 1.) * k2
 
             a1 = (  f12       - v1 * b1 + self.signal(t)) / m1
             a2 = (  f23 - f12 - v2 * b2                 ) / m2
