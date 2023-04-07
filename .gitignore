@@ -1,5 +1,9 @@
 # Notebooks (by default), project cache and private files
 *.ipynb
+!generate\ data.ipynb
+!generate\ figures.ipynb
+figures-manuscript/
+figures-internal/
 cache/
 private/
 
