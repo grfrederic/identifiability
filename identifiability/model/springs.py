@@ -1,10 +1,7 @@
 import jax
 import jax.numpy as jnp
 
-import diffrax
-
 from .base import AbstractODEModel
-from .. import diffrax_utils
 from .. import signals
 
 
