@@ -66,7 +66,6 @@ class AbstractODEModel(AbstractModel):
             y0=self.y0,
             args=parameters,
             throw=False,
-            adjoint=diffrax.NoAdjoint(),
             **self.diffrax_diffeqsolve_kwargs,
         )
 
