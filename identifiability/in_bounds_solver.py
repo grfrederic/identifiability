@@ -4,7 +4,7 @@ import jax
 import jax.numpy as jnp
 
 import diffrax
-from diffrax.custom_types import Bool, DenseInfo, PyTree, PyTreeDef, Scalar
+from diffrax.custom_types import Bool, DenseInfo, PyTree, Scalar
 from diffrax.term import AbstractTerm
 from diffrax.solution import RESULTS
 
